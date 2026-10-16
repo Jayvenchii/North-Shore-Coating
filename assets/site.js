@@ -3,6 +3,17 @@
   "use strict";
   var $ = function (id) { return document.getElementById(id); };
 
+  /* ---------- seasonal banner + footer year (kept current without a rebuild) ---------- */
+  var now = new Date(), m = now.getMonth() + 1;
+  var banner = $("season-banner"), year = $("copy-year");
+  if (banner) banner.textContent = m <= 3 ? "BOOK YOUR SPRING SEAL NOW · EARLY-BIRD PRICING THROUGH MARCH"
+    : m <= 5 ? "SEALCOATING SEASON IS OPEN · BOOK YOUR SPRING SEAL NOW"
+    : m <= 8 ? "SUMMER SEALCOATING · FREE QUOTES WITHIN 24 HOURS"
+    : m === 9 ? "FALL IS THE SMART TIME TO SEAL · PROTECT YOUR DRIVEWAY BEFORE WINTER"
+    : m === 10 ? "LAST CALL FOR FALL SEALCOATING · BOOK BEFORE SALT SEASON"
+    : "GET AHEAD OF SPRING · FREE ESTIMATES ALL WINTER";
+  if (year) year.textContent = String(now.getFullYear());
+
   /* ---------- mobile / tablet menu ---------- */
   var menuBtn = $("menu-btn"), mnav = $("nsc-mnav");
   function setMenu(open) {
