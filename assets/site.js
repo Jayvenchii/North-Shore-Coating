@@ -6,12 +6,15 @@
   /* ---------- seasonal banner + footer year (kept current without a rebuild) ---------- */
   var now = new Date(), m = now.getMonth() + 1;
   var banner = $("season-banner"), year = $("copy-year");
-  if (banner) banner.textContent = m <= 3 ? "BOOK YOUR SPRING SEAL NOW · EARLY-BIRD PRICING THROUGH MARCH"
-    : m <= 5 ? "SEALCOATING SEASON IS OPEN · BOOK YOUR SPRING SEAL NOW"
-    : m <= 8 ? "SUMMER SEALCOATING · FREE QUOTES WITHIN 24 HOURS"
-    : m === 9 ? "FALL IS THE SMART TIME TO SEAL · PROTECT YOUR DRIVEWAY BEFORE WINTER"
-    : m === 10 ? "LAST CALL FOR FALL SEALCOATING · BOOK BEFORE SALT SEASON"
-    : "GET AHEAD OF SPRING · FREE ESTIMATES ALL WINTER";
+  if (banner) banner.textContent = m <= 2 ? "PLAN AHEAD & SAVE · LOCK IN EARLY-BIRD PRICING BEFORE OUR SPRING CALENDAR FILLS"
+    : m === 3 ? "SPRING IS HERE! · EARLY-BIRD PRICING ENDS MARCH 31"
+    : m === 4 ? "NOW BOOKING FOR MAY · PRIME DATES ARE FILLING"
+    : m === 5 ? "SUMMER IS ALMOST HERE! · RESTORE & PROTECT YOUR ASPHALT AFTER WINTER WEAR"
+    : m === 6 ? "SUMMER IS HERE! · GET A FLAWLESS, JET-BLACK FINISH BEFORE THE 4TH OF JULY"
+    : m <= 8 ? "MID-SUMMER BLACKTOP DRIVEWAYS · RESTORE & PROTECT YOUR DRIVEWAY"
+    : m === 9 ? "PRE-WINTER ASPHALT DEFENSE · BEAT THE WINTER DAMAGE"
+    : m === 10 ? "THE COLD IS APPROACHING! · PROTECT YOUR DRIVEWAY BEFORE SALT & PLOW SEASON"
+    : "SEASON CLOSED FOR APPLICATION · GET YOUR SPRING QUOTE NOW TO BE FIRST ON THE " + (now.getFullYear() + 1) + " SCHEDULE";
   if (year) year.textContent = String(now.getFullYear());
 
   /* ---------- mobile / tablet menu ---------- */
