@@ -64,28 +64,23 @@
 
   /* ---------- service-area map: box around every town we serve ---------- */
   var mapEl = $("area-map");
-  var TOWNS = [["Highland Park",42.1817,-87.8003],["Highwood",42.2000,-87.8092],["Deerfield",42.1711,-87.8445],["Lake Forest",42.2586,-87.8406],
-    ["Lake Bluff",42.2789,-87.8342],["Bannockburn",42.1934,-87.8723],["Glencoe",42.1350,-87.7581],["Winnetka",42.1081,-87.7359],
-    ["Kenilworth",42.0856,-87.7170],["Wilmette",42.0723,-87.7228],["Evanston",42.0451,-87.6877],["Northbrook",42.1275,-87.8290],
-    ["Northfield",42.0997,-87.7809],["Glenview",42.0698,-87.7878],["Skokie",42.0324,-87.7416],["Morton Grove",42.0406,-87.7826],
-    ["Niles",42.0189,-87.8028],["Lincolnshire",42.1900,-87.9084],["Buffalo Grove",42.1514,-87.9598],["Wheeling",42.1392,-87.9290],
-    ["Prospect Heights",42.0953,-87.9376],["Mount Prospect",42.0664,-87.9373],["Arlington Heights",42.0884,-87.9806],["Libertyville",42.2831,-87.9531],
-    ["Vernon Hills",42.2192,-87.9795],["Mundelein",42.2631,-88.0040],["North Chicago",42.3256,-87.8412],["Waukegan",42.3636,-87.8448],
-    ["Gurnee",42.3703,-87.9020],["Zion",42.4461,-87.8328]];
+  // Service-area outline: inland edge around the towns we serve, lakeshore on the east (lat, lng).
+  var AREA = [
+    [42.4920, -87.7980], [42.4920, -87.9300], [42.4300, -87.9800], [42.3600, -88.0000], [42.3000, -88.0550],
+    [42.2350, -88.0350], [42.1650, -88.0150], [42.1100, -88.0300], [42.0550, -88.0050], [42.0150, -87.9350],
+    [41.9950, -87.8400], [42.0000, -87.7600], [42.0200, -87.6700],
+    [42.0600, -87.6640], [42.0800, -87.6800], [42.0950, -87.6960], [42.1150, -87.7110], [42.1450, -87.7360],
+    [42.1800, -87.7590], [42.2100, -87.7740], [42.2500, -87.7880], [42.2850, -87.8030], [42.3250, -87.8040],
+    [42.3650, -87.7990], [42.4200, -87.7930], [42.4650, -87.7960]
+  ];
   var drawMap = function () {
     if (!mapEl || !window.L || mapEl._drawn) return;
     mapEl._drawn = true;
     var L = window.L;
     var map = L.map(mapEl, { scrollWheelZoom: false });
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
-    var lats = TOWNS.map(function (t) { return t[1]; }), lngs = TOWNS.map(function (t) { return t[2]; });
-    var pad = 0.025;
-    var box = [[Math.min.apply(null, lats) - pad, Math.min.apply(null, lngs) - pad], [Math.max.apply(null, lats) + pad, Math.max.apply(null, lngs) + pad]];
-    L.rectangle(box, { color: "#000000", weight: 3, fillColor: "#dbbb36", fillOpacity: 0.2, interactive: false }).addTo(map);
-    TOWNS.forEach(function (t) {
-      L.circleMarker([t[1], t[2]], { radius: 6, color: "#000000", weight: 2, fillColor: "#dbbb36", fillOpacity: 1 }).bindTooltip(t[0], { direction: "top" }).addTo(map);
-    });
-    map.fitBounds(box, { padding: [12, 12] });
+    var area = L.polygon(AREA, { color: "#000000", weight: 4, fillColor: "#dbbb36", fillOpacity: 0.18, interactive: false, lineJoin: "round" }).addTo(map);
+    map.fitBounds(area.getBounds(), { padding: [14, 14] });
   };
   if (mapEl) {
     var startMap = function () { if (window.L) drawMap(); else window.addEventListener("load", drawMap); };
