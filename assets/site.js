@@ -78,6 +78,7 @@
     mapEl._drawn = true;
     var L = window.L;
     var map = L.map(mapEl, { scrollWheelZoom: false });
+    map.attributionControl.setPrefix(false); // drop the optional "Leaflet" link; the OpenStreetMap credit is required by its license
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
     var area = L.polygon(AREA, { color: "#000000", weight: 4, fillColor: "#dbbb36", fillOpacity: 0.18, interactive: false, lineJoin: "round" }).addTo(map);
     map.fitBounds(area.getBounds(), { padding: [14, 14] });
