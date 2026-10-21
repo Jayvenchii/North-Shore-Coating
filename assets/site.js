@@ -33,19 +33,22 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !mnav.hidden) { setMenu(false); menuBtn.focus(); } });
   }
 
-  /* ---------- before / after slider ---------- */
-  var range = $("ba-range");
-  if (range) {
-    var after = $("ba-after"), line = $("ba-line"), knob = $("ba-knob");
+  /* ---------- before / after sliders (hero + any in articles) ---------- */
+  var slider = function (range, after, line, knob) {
+    if (!range || !after) return;
     var paint = function () {
       var v = Number(range.value);
       after.style.clipPath = "inset(0 0 0 " + v + "%)";
-      line.style.left = v + "%";
-      knob.style.left = v + "%";
+      if (line) line.style.left = v + "%";
+      if (knob) knob.style.left = v + "%";
     };
     range.addEventListener("input", paint);
     paint();
-  }
+  };
+  slider($("ba-range"), $("ba-after"), $("ba-line"), $("ba-knob"));
+  Array.prototype.forEach.call(document.querySelectorAll(".nsc-ba"), function (box) {
+    slider(box.querySelector(".nsc-ba-range"), box.querySelector(".nsc-ba-after"), box.querySelector(".nsc-ba-line"), box.querySelector(".nsc-ba-knob"));
+  });
 
   /* ---------- blog arrows ---------- */
   var track = $("blog-track");
@@ -196,7 +199,7 @@
     body.append("message", d.msg);
     body.append("photo_count", "0");
     body.append("photo_names", "");
-    body.append("source", "Website estimate form");
+    body.append("source", form.getAttribute("data-source") || "Website estimate form");
     body.append("submitted_at", new Date().toISOString());
     body.append("page", window.location.href);
     var ctrl = typeof AbortController === "function" ? new AbortController() : null;
