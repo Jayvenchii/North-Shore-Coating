@@ -217,7 +217,7 @@
     b.append("photo_count", String(shots.length));
     shots.forEach(function (s, i) { b.append("photo_" + (i + 1), s.data); b.append("photo_" + (i + 1) + "_name", s.name); });
     b.append("service", "Christmas light installation");
-    b.append("source", "Christmas light installation quote form");
+    b.append("source", form.getAttribute("data-source") || "Christmas light installation quote form");
     b.append("submitted_at", new Date().toISOString());
     b.append("page", window.location.href);
     return b;
