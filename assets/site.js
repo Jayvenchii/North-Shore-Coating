@@ -17,6 +17,9 @@
     : "SEASON CLOSED FOR APPLICATION · GET YOUR SPRING QUOTE NOW TO BE FIRST ON THE SCHEDULE";
   if (year) year.textContent = String(now.getFullYear());
 
+  /* ---------- seasonal menu link: Christmas lights, August through January ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-season="xmas"]'), function (a) { a.hidden = !(m >= 8 || m === 1); });
+
   /* ---------- mobile / tablet menu ---------- */
   var menuBtn = $("menu-btn"), mnav = $("nsc-mnav");
   function setMenu(open) {

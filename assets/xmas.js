@@ -11,7 +11,7 @@
   var BODY_LIMIT = 95000;
   var MAX_PHOTOS = 3;
   var DRAFT = "nsc-xmas-draft";
-  var TEXT = ["name", "phone", "email", "street", "city", "zip", "heard_about_us"];
+  var TEXT = ["name", "phone", "email", "street", "city", "zip", "heard_about_us", "message"];
   var REQUIRED = ["name", "customer_type", "phone", "email", "street", "city", "zip", "heard_about_us"];
   var store = { get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
                 set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} },
@@ -35,7 +35,8 @@
       street: String(el("street").value || "").replace(/\s+/g, " ").trim().slice(0, 120),
       city: String(el("city").value || "").replace(/\s+/g, " ").trim().slice(0, 60),
       zip: String(el("zip").value || "").replace(/\D/g, "").slice(0, 5),
-      heard_about_us: String(el("heard_about_us").value || "")
+      heard_about_us: String(el("heard_about_us").value || ""),
+      message: String(el("message").value || "").trim().slice(0, 600)
     };
   };
   var check = function (d) {
@@ -214,6 +215,7 @@
     b.append("zip", d.zip);
     b.append("address", d.street + ", " + d.city + ", IL " + d.zip);
     b.append("heard_about_us", d.heard_about_us);
+    b.append("message", d.message);
     b.append("photo_count", String(shots.length));
     shots.forEach(function (s, i) { b.append("photo_" + (i + 1), s.data); b.append("photo_" + (i + 1) + "_name", s.name); });
     b.append("service", "Christmas light installation");
