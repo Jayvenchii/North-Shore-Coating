@@ -55,16 +55,59 @@ a{color:#000000}a:hover{color:#3a3a3a}
 .post a.nsc-mid-b:hover{color:#ffffcc;border-color:#ffffcc}
 @media (max-width: 640px){h1[style*="font-size: 62px"],h1[style*="font-size: 66px"]{font-size:clamp(36px,10.5vw,48px) !important}.post h2{font-size:30px}}
 </style>
+
+<style>.nsc-btn{position:relative;overflow:hidden;transition:transform .18s ease}
+.nsc-btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .55s ease}
+.nsc-btn:hover{transform:translateY(-3px)}
+.nsc-btn:hover::after{left:130%}
+.nsc-navlinks{display:flex;gap:22px;font-weight:800;font-size:15px;text-transform:uppercase;flex-wrap:nowrap}
+.nsc-navlinks a{position:relative;text-decoration:none;white-space:nowrap}
+.nsc-navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:3px;background:#000000;transition:right .25s ease}
+.nsc-navlinks a:hover::after{right:0}
+.nsc-menu-btn{display:none;width:46px;height:46px;border:0;border-radius:10px;background:transparent;cursor:pointer;align-items:center;justify-content:center;padding:0}
+.nsc-menu-btn:focus-visible{outline:3px solid #000000;outline-offset:2px}
+.nsc-mnav{position:absolute;left:0;right:0;top:100%;background:#ffffcc;border-bottom:3px solid #000000;box-shadow:0 12px 24px rgba(0,0,0,.25);display:flex;flex-direction:column;padding:8px 16px 18px}
+.nsc-mnav a{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:0 6px;border-bottom:2px solid rgba(0,0,0,.18);font-weight:800;font-size:18px;text-transform:uppercase;text-decoration:none;color:#000000}
+.nsc-mnav a.nsc-mnav-cta{margin-top:14px;justify-content:center;background:#000000;color:#ffffff;border-radius:10px;border-bottom:0}
+@media (max-width: 1040px){.nsc-navlinks{display:none}.nsc-menu-btn{display:flex}}
+@media (min-width: 1041px){.nsc-mnav{display:none !important}}
+@media (max-width: 640px){.nsc-hdr-call{padding:9px 12px !important;font-size:14px}.nsc-hdr-est{padding:11px 12px !important;font-size:14px}.nsc-hdr-row{padding-left:16px !important;padding-right:16px !important;gap:10px !important}}
+@media (max-width: 520px){.nsc-wordmark{display:none !important}.nsc-call-txt{display:none}.nsc-hdr-call{width:46px;height:46px;padding:0 !important;justify-content:center}}
+@media (max-width: 1240px) and (min-width: 1041px){.nsc-navlinks{gap:14px;font-size:14px}.nsc-hdr-row{gap:12px !important}.nsc-hdr-call,.nsc-hdr-est{padding-left:12px !important;padding-right:12px !important}}
+@media (max-width: 1180px){.nsc-navlinks{display:none !important}.nsc-menu-btn{display:flex !important}.nsc-mnav:not([hidden]){display:flex !important}}</style>
 <style>[hidden]{display:none !important}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Christmas light installation in Kenilworth, IL: detail work for distinctive homes","description":"Christmas light installation in Kenilworth, IL: custom design, professional install, takedown and storage for homes and businesses. Free quotes from North Shore Coating.","image":"https://northshorecoating.com/images/xmas-main-after.jpg","mainEntityOfPage":"https://northshorecoating.com/christmas-light-installation-kenilworth-il/","author":{"@type":"Organization","name":"North Shore Coating","url":"https://northshorecoating.com/"},"publisher":{"@type":"Organization","name":"North Shore Coating","logo":{"@type":"ImageObject","url":"https://northshorecoating.com/images/logo-full.png"}}}</script>
 </head>
 <body data-accent="#ffffcc">
 <div style="font-family: Barlow, sans-serif; color: #000000; background: #ffffff; width: 100%">
-<header style="background: #ffffcc; border-bottom: 3px solid #000000; position: sticky; top: 0; z-index: 10">
-<div style="max-width: 1240px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px">
-<a href="/christmas-light-installation/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #000000"><img src="/images/logo-mark.png" alt="North Shore Coating logo" style="width: 44px; height: 50px; object-fit: contain"><span style="display: flex; flex-direction: column; line-height: 1"><span style="font-family: Archivo, sans-serif; font-weight: 500; font-size: 14px">North Shore</span><span style="font-family: Archivo, sans-serif; font-weight: 900; font-stretch: 125%; font-size: 20px">COATING</span></span></a>
-<div style="display: flex; gap: 10px; flex-wrap: wrap"><a href="/christmas-light-installation/" class="nsc-btn" style="border: 3px solid #000000; padding: 10px 16px; border-radius: 10px; font-weight: 800; text-decoration: none">← Christmas lights</a><a href="/christmas-light-installation/#quote" class="nsc-btn" style="background: #000000; color: #ffffff; padding: 13px 18px; border-radius: 10px; font-weight: 800; text-decoration: none; text-transform: uppercase">Free Quote</a></div>
+<header style="background: #ffffcc; position: sticky; top: 0; z-index: 20; border-bottom: 3px solid #000000">
+<div class="nsc-hdr-row" style="max-width: 1240px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 18px">
+<div style="display: flex; align-items: center; gap: 10px; flex: none">
+<button type="button" class="nsc-menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nsc-mnav" aria-label="Open menu"><svg class="ic-open" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg><svg class="ic-close" hidden aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+<a href="/christmas-light-installation/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #000000; flex: none">
+<img src="/images/logo-mark.png" alt="North Shore Coating logo" style="width: 48px; height: 54px; object-fit: contain">
+<span class="nsc-wordmark" style="display: flex; flex-direction: column; line-height: 1"><span style="font-family: Archivo, sans-serif; font-weight: 500; font-size: 15px">North Shore</span><span style="font-family: Archivo, sans-serif; font-weight: 900; font-stretch: 125%; font-size: 21px; letter-spacing: 0.01em">COATING</span></span>
+</a>
 </div>
+<nav class="nsc-navlinks" aria-label="Main">
+<a href="/">Sealcoating</a>
+<a href="/christmas-light-installation/#process">Process</a>
+<a href="/christmas-light-installation/#about">About</a>
+<a href="/christmas-light-installation/#reviews">Reviews</a>
+<a href="/christmas-light-installation/#faq">FAQ</a>
+<a href="/christmas-light-installation/#blog">Blog</a>
+<a href="/christmas-light-installation/" aria-current="page">Christmas Lights</a>
+</nav>
+<div style="display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; flex: none">
+<a href="tel:7735304888" aria-label="Call now: 773-530-4888" class="nsc-btn nsc-hdr-call" style="display: flex; align-items: center; gap: 8px; border: 3px solid #000000; padding: 10px 16px; border-radius: 10px; font-weight: 800; text-decoration: none; text-transform: uppercase; white-space: nowrap"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5"><path d="M5 3h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"></path></svg><span class="nsc-call-txt">Call Now</span></a>
+<a href="/christmas-light-installation/#quote" class="nsc-btn nsc-hdr-est" style="background: #000000; color: #ffffff; padding: 13px 18px; border-radius: 10px; font-weight: 800; text-decoration: none; text-transform: uppercase; white-space: nowrap">Free Quote</a>
+</div>
+</div>
+
+<nav id="nsc-mnav" class="nsc-mnav" aria-label="Mobile" hidden>
+<a href="/">Sealcoating<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#process">Process<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#about">About<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#reviews">Reviews<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#faq">FAQ<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#blog">Blog<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/" aria-current="page">Christmas Lights<span aria-hidden="true">→</span></a><a href="/christmas-light-installation/#quote" class="nsc-mnav-cta">Get my free quote</a>
+</nav>
+
 </header>
 <section style="background: #000000; color: #ffffff">
 <div style="max-width: 900px; margin: 0 auto; padding: 80px 24px 60px">
@@ -127,6 +170,6 @@ a{color:#000000}a:hover{color:#3a3a3a}
 </section>
 <footer style="background: #ffffff; color: #333333; text-align: center; padding: 30px 24px; font-size: 15px; font-weight: 600; border-top: 3px solid #000000">North Shore Coating · <a href="tel:7735304888" style="color: #000000; font-weight: 800; text-decoration: none">773-530-4888</a> · <a href="mailto:info@northshorecoating.com" style="color: #000000; font-weight: 800; text-decoration: none">info@northshorecoating.com</a> · <a href="/christmas-light-installation/" style="color: #000000; font-weight: 800; text-decoration: none">Christmas light installation</a> for the North Shore &amp; Lake County, IL</footer>
 </div>
-
+<script src="/assets/site.js?v=9bd5416871" defer></script>
 </body>
 </html>
