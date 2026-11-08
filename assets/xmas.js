@@ -279,6 +279,8 @@
     }).then(function () {
       setSending(false);
       store.del(DRAFT);
+      // successful send: show /thank-you in the address bar (main Christmas page only)
+      if (location.pathname === "/christmas-light-installation/") try { history.pushState(null, "", "/christmas-light-installation/thank-you"); } catch (err) {}
       $("xform-wrap").hidden = true;
       var done = $("xdone"); done.hidden = false;
       try { done.scrollIntoView({ behavior: "smooth", block: "center" }); done.focus({ preventScroll: true }); } catch (err) {}
@@ -296,5 +298,6 @@
     $("xseg-type").classList.remove("nsc-bad");
     $("xform-summary").hidden = true;
     $("xdone").hidden = true; $("xform-wrap").hidden = false;
+    if (location.pathname === "/christmas-light-installation/thank-you") try { history.replaceState(null, "", "/christmas-light-installation/#quote"); } catch (err) {}
   });
 })();

@@ -261,6 +261,8 @@
       setSending(false);
       store.del(DRAFT);
       lastSent = d;
+      // successful send: show /thank-you in the address bar (homepage only)
+      if (location.pathname === "/") try { history.pushState(null, "", "/thank-you"); } catch (err) {}
       runProcessing();
     }, function (err) {
       setSending(false);
@@ -294,6 +296,7 @@
     $("nsc-details").hidden = true;
     $("details-btn").setAttribute("aria-expanded", "false"); $("details-btn").textContent = "View submitted details";
     $("done").hidden = true; $("proc").hidden = true; $("form-wrap").hidden = false;
+    if (location.pathname === "/thank-you") try { history.replaceState(null, "", "/#quote"); } catch (err) {}
     reveal();
   });
 })();
